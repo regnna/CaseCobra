@@ -72,3 +72,9 @@ Whenever we are changing the prisma model configuration we have to
 ```sh
 npx prisma db push
 ```
+## React-rnd
+For creating Dragable and resizeable React components 
+
+## @Headlessui/react
+A set of completely unstyled, fully accessible UI components for reacts, designed to integrate with Tailwind CSS
+ShadCN radio options are not good so we are using radio options from headlessui 
