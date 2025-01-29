@@ -13,10 +13,115 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Configuration{
-  id String @id @default(cuid())
-  width Int
-  height Int
-  imageUrl String
+// enum is a list of valid entries
+
+enum OrderStatus {
+  fulfilled
+  shipped
+  awaiting_shipment
+}
+
+enum PhoneModel {
+  iphonex
+  iphone11
+  iphone12
+  iphone13
+  iphone14
+  iphone15
+}
+
+enum CaseMaterial {
+  silicone
+  polycarbonate
+  plastic
+}
+
+enum CaseFinish {
+  smooth
+  textured
+  leather
+}
+
+enum CaseColor {
+  black
+  blue
+  rose
+  orange
+}
+
+// model User {
+//   id    String @id @default(cuid()) //collision resistance unique identifier
+//   email String @unique
+  
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   Order     Order[]
+// }
+
+model Configuration {
+  id              String        @id @default(cuid()) //collision resistance unique identifier
+  width           Int
+  height          Int
+  imageUrl        String
+  model           PhoneModel?
+  material        CaseMaterial?
+  finish          CaseFinish?
+  color           CaseColor?
   croppedImageUrl String?
+  Order           Order[]
+}
+
+model User {
+  id    String  @id @default(cuid())
+  email String
+  Order Order[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id              String        @id @default(cuid())
+  configurationId String
+  configuration   Configuration @relation(fields: [configurationId], references: [id])
+  user            User          @relation(fields: [userId], references: [id])
+  userId          String
+  amount          Float
+  isPaid          Boolean       @default(false)
+  status          OrderStatus   @default(awaiting_shipment)
+
+  shippingAddress   ShippingAddress? @relation(fields: [shippingAddressId], references: [id])
+  shippingAddressId String?
+  billingAddress    BillingAddress?  @relation(fields: [billingAddressId], references: [id])
+  billingAddressId  String?
+
+  createdAt DateTime @default(now())
+  updated   DateTime @updatedAt
+}
+
+
+
+model ShippingAddress {
+  id          String  @id @default(cuid())
+  name        String
+  street      String
+  city        String
+  postalCode  String
+  country     String
+  state       String?
+  phoneNumber String?
+  orders      Order[]
+}
+
+model BillingAddress {
+  id          String  @id @default(cuid())
+  name        String
+  street      String
+  city        String
+  postalCode  String
+  country     String
+  state       String?
+  phoneNumber String?
+  orders      Order[]
 }
