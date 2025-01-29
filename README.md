@@ -78,3 +78,62 @@ For creating Dragable and resizeable React components
 ## @Headlessui/react
 A set of completely unstyled, fully accessible UI components for reacts, designed to integrate with Tailwind CSS
 ShadCN radio options are not good so we are using radio options from headlessui 
+
+?.  if it exists
+!.  sure it exists
+
+
+
+## tanstack/react-query
+### QueryClientProvider(QCP)
+        Wrapping the whole application gives me the liverage of caching the data we got from a API call and use it further in the application
+        
+        Set this to true to enable context sharing, which will share the first and at least one instance of the context across the window to ensure that if React Query is used across different bundles or microfrontends they will all use the same instance of context, regardless of module scoping.
+
+## RPC(Remote Procedure Call)
+## Hooks
+### useQuery (for get requests)
+### useMutation (for post/put requests)
+        const {mutate:saveConfig}=useMutation({
+  mutationKey:['save-config'],
+  mutationFn: async (args:SaveConfigArgs) =>{
+    await Promise.all([saveConfiguration(),_saveConfig(args)])
+  },
+  onError:() =>{
+    toast({
+      title:"Something went wrong",
+      description:"There was a problem saving your configuration, Please try again",
+      variant:'destructive',
+    })
+  },
+  onSuccess:()=>{
+    router.push(`/configure/preview?id=${configId}`)
+  },
+ })
+
+## Used react-dom-confetti
+
+
+## Used stripe library
+
+what does css flow-root do ??
+# Errors 
+
+## Type 'string | null' is not assignable to type 'string'.
+  Type 'null' is not assignable to type 'string'.ts(2322)
+
+ <Phone imgSrc={configurations.croppedImageUrl!}/>
+
+ <div className='my-2 h-px bg-gray-200'/> a CSS separator
+
+
+## Auth Callback
+  please Login(before checkout)
+  like it works when you already configured your case without login/signup but now if you try to get to checkout you have to login and login redirets to the home page 
+
+  to deal with that we have to save the configuration some where and provide the user that
+
+
+
+## used Stripe webhook for payment systems
+
