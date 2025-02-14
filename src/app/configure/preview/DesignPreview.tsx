@@ -90,7 +90,7 @@ router.push(url)
       else{
         //need to login
   console.log("##$#$#$@#!#! user is",alsoUser)
-  console.log("##$#$#$@#!#! user isss",User)
+  console.log("##$#$#$@#!#! user isss",user)
 
         localStorage.setItem('configurationId',id)
         setIsLoginModalOpen(true)
