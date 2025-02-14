@@ -13,6 +13,7 @@ const Page=async({searchParams}:PageProps)=>{
     if(!id || typeof id!=="string"){
         return notFound()
     }
+    console.log("##$#$#$@#!#! id is",id)
     const configuration =await db.configuration.findUnique({
         where:{id},
 
@@ -23,7 +24,8 @@ const Page=async({searchParams}:PageProps)=>{
     }
 
     const {imageUrl,width,height}=configuration
-
+    
+    console.log("##$#$#$@#!#! ImageUrl  is",imageUrl)
     return <DesignConfigurator configId={configuration.id}
     imageDimensions={{width,height}}
     imageUrl={imageUrl}
