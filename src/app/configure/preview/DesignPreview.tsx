@@ -21,6 +21,8 @@ const DesignPreview = ({configuration}:{configuration:Configuration}) => {
   const {toast}=useToast()
   const [showConfetti,setShowConfetti] =useState(false)
   const {user}=useKindeBrowserClient()
+  console.log("##$#$#$@#!#! user is",user)
+  // console.log(user)
   const {id} =configuration  
 
   const {color,model,finish,material}=configuration
@@ -78,6 +80,7 @@ router.push(url)
 
 
     const handleCheckout=()=>{
+
       if(user){
 
         // create payment session
