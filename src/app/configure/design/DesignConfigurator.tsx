@@ -36,7 +36,7 @@ const DesignConfigurator=({configId,imageUrl,imageDimensions}: DesignConfigurato
  const {toast}= useToast();
  const router=useRouter();
 
- const {mutate:saveConfig}=useMutation({
+ const {mutate:saveConfig,isPending}=useMutation({
   mutationKey:['save-config'],
   mutationFn: async (args:SaveConfigArgs) =>{
     await Promise.all([saveConfiguration(),_saveConfig(args)])
@@ -325,6 +325,9 @@ const {startUpload} =useUploadThing("imageUploader")
                 {formatPrice(BASE_PRICE+options.finish.price+options.material.price)}
               </p>
               <Button 
+                isLoading={isPending}
+                disabled={isPending}
+                loadingText="Saving"
               onClick={()=>saveConfig(
                 {
                 configId,
