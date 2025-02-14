@@ -20,8 +20,9 @@ const DesignPreview = ({configuration}:{configuration:Configuration}) => {
   const router= useRouter()
   const {toast}=useToast()
   const [showConfetti,setShowConfetti] =useState(false)
-  const {user}=useKindeBrowserClient()
-  console.log("##$#$#$@#!#! user is",user)
+  // const {user}=useKindeBrowserClient()
+  const {user, getUser} = useKindeBrowserClient();
+const alsoUser = getUser();
   // console.log(user)
   const {id} =configuration  
 
@@ -88,6 +89,9 @@ router.push(url)
       }
       else{
         //need to login
+  console.log("##$#$#$@#!#! user is",alsoUser)
+  console.log("##$#$#$@#!#! user isss",User)
+
         localStorage.setItem('configurationId',id)
         setIsLoginModalOpen(true)
       }
