@@ -23,6 +23,8 @@ const DesignPreview = ({configuration}:{configuration:Configuration}) => {
   // const {user}=useKindeBrowserClient()
   const {user, getUser} = useKindeBrowserClient();
 const alsoUser = getUser();
+console.log("#$$$$@# @#$ @$$ @$ User from Kinde:", user);
+console.log("#$$$$@# @#$ @$$ @$ Also User from Kinde:", alsoUser);
   // console.log(user)
   const {id} =configuration  
 
@@ -63,9 +65,11 @@ const alsoUser = getUser();
       mutationFn:createCheckoutSession,
       onSuccess: ({url}) => {
         if(url){
-router.push(url)
+          router.push(url)
         }
         else{
+
+          
           throw new Error("Unable to retrive payment URL")
         }
       },
@@ -78,7 +82,7 @@ router.push(url)
       }
 
     })
-
+   
 
     const handleCheckout=()=>{
 
@@ -89,8 +93,7 @@ router.push(url)
       }
       else{
         //need to login
-  console.log("##$#$#$@#!#! user is",alsoUser)
-  console.log("##$#$#$@#!#! user isss",user)
+  
 
         localStorage.setItem('configurationId',id)
         setIsLoginModalOpen(true)
