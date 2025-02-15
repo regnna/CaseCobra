@@ -2,6 +2,7 @@ import { db } from '@/db'
 import { notFound } from 'next/navigation'
 import React from 'react'
 import DesignPreview from './DesignPreview'
+import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'
 
 interface PageProps{
     searchParams: {
@@ -9,6 +10,10 @@ interface PageProps{
     }
 }
 const page = async ({searchParams}:PageProps) => {
+    const {user, getUser} = useKindeBrowserClient();
+    const alsoUser = getUser();
+    console.log("#$$$$@# @#$ @$$ @$ User from Kinde:", user);
+console.log("#$$$$@# @#$ @$$ @$ Also User from Kinde:", alsoUser);
     const {id} =searchParams
     if(!id ||typeof(id)!='string'){
         return notFound();
