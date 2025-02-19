@@ -29,6 +29,7 @@ const page = async ({searchParams}:PageProps) => {
     }
 
   return (
+    // @ts-ignore
     <DesignPreview configuration={configuration} user={user}/>
   )
 }
