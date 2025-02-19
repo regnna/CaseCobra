@@ -14,7 +14,7 @@ const page = async ({searchParams}:PageProps) => {
     const {getUser}=getKindeServerSession();
     const user=await getUser()
     // const alsoUser = getUser();
-    console.log("#$$$$@# @#$ @$$ @$ User from Kinde:", user);
+    // console.log("#$$$$@# @#$ @$$ @$ User from Kinde:", user);
 // console.log("#$$$$@# @#$ @$$ @$ Also User from Kinde:", alsoUser);
     const {id} =searchParams
     if(!id ||typeof(id)!='string'){
@@ -29,7 +29,7 @@ const page = async ({searchParams}:PageProps) => {
     }
 
   return (
-    <DesignPreview configuration={configuration}/>
+    <DesignPreview configuration={configuration} user={user}/>
   )
 }
 
