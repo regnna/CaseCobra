@@ -10,6 +10,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.19.4",
     "@headlessui/react": "^2.2.0",
     "@kinde-oss/kinde-auth-nextjs": "^2.5.1",
     "@prisma/client": "^5.22.0",
