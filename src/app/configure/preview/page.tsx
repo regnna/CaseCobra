@@ -12,6 +12,7 @@ interface PageProps{
 }
 const page = async ({searchParams}:PageProps) => {
     const {getUser}=getKindeServerSession()
+    
     const user=await getUser()
     // const {getUser}=getKindeServerSession();
     // const user=await getUser()
