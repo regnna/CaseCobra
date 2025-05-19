@@ -72,6 +72,7 @@ const DesignPreview = (
       setIsLoginModalOpen(true)
     }
   }
+  // console.log(user)
 
   return (
     <>

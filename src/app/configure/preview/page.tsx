@@ -11,8 +11,10 @@ interface PageProps{
     }
 }
 const page = async ({searchParams}:PageProps) => {
-    const {getUser}=getKindeServerSession();
+    const {getUser}=getKindeServerSession()
     const user=await getUser()
+    // const {getUser}=getKindeServerSession();
+    // const user=await getUser()
     // const alsoUser = getUser();
     // console.log("#$$$$@# @#$ @$$ @$ User from Kinde:", user);
 // console.log("#$$$$@# @#$ @$$ @$ Also User from Kinde:", alsoUser);
